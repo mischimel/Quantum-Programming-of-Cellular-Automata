@@ -13,7 +13,6 @@ def determine_cell_state(left_cell, middle_cell, right_cell):
     index = int(neighbourhood, 2)  # Convert the binary string into a decimal integer
     return ruleset[7 - index]  # Reverse the index since ruleset is defined in descending order
 
-
 # Function to print the state of cells as black or with square for a given generation
 def print_cells(cells, generation):
     print(f"Generation {generation}: ", end="")  # Print the generation number
@@ -21,9 +20,9 @@ def print_cells(cells, generation):
     # Iterate through each cell in the list of cells and check the state of the cell
     for cell in cells:
         if cell == 1:  # If the cell is 1 (alive), print a black square (■)
-            print("■", end="")
-        else:
-            print("□", end="")  # If the cell is 0 (dead), print a withe square (□)
+            print('\u25a0', end="") # to check ASCII code: ascii("■") -> '\u25a0'
+        else: # If the cell is 0 (dead), print a withe square (□)
+            print('\u25a1', end="")  # to check ASCII code: ascii("□") -> '\u25a1'
 
     print()  # Print all cells for the generation
 
