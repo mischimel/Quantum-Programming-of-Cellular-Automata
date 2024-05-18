@@ -37,9 +37,9 @@ for generation in range(1, 21):
     # Loop through each cell, excluding the edge cells
     for i in range(1, len(cells) - 1):
         left = cells[i - 1]  # Get the state of the left neighbour cell
-        middle = cells[i]  # Get the state of the middle (target) cell
+        middle = cells[i]  # Get the state of the middle cell
         right = cells[i + 1]  # Get the state of the right neighbour cell
-        nextgen[i] = determine_cell_state(left, middle, right)  # Determine the state of the middle (target) cell
+        nextgen[i] = determine_cell_state(left, middle, right)  # Determine the state of the middle cell
 
     cells = nextgen  # Update the state of cells to the next generation
     print_cells(cells, generation)  # Print the state of cells for the current generation
