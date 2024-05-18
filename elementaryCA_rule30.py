@@ -27,10 +27,12 @@ def print_cells(cells, generation):
 
     print()  # Print all cells for the generation
 
+# Print initial generation
+print_cells(cells, generation)
 
 # Compute the states of cells for multiple generations
 # Loop through 31 generations (0 to 30)
-for generation in range(0, 31):
+for generation in range(1, 31):
     nextgen = cells[:]  # Create a copy of the current state of cells for the next generation
     # Loop through each cell, excluding the edge cells
     for i in range(1, len(cells) - 1):
