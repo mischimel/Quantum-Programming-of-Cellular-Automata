@@ -1,3 +1,5 @@
+# Reference/Aides used: Daniel Shiffmanns Chapter CA and Code Exercises, ChatGPT
+
 # Define variables
 generation = 0  # Start at generation 0
 ruleset = [0, 0, 0, 1, 1, 1, 1, 0]  # Rule 30
