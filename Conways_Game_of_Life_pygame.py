@@ -43,6 +43,20 @@ def initialize_grid(grid):
             grid[i, j] = np.random.randint(2) # Assign a random value (0 or 1) to the cell at position (i, j)
 
 
+# Function to calculate the sum of neighbour's states
+def compute_neighbour_sum(grid, i, j):
+    sum = 0  # Initialize a variable to store the sum of neighbour values
+    # Loop over the neighbourhood of the cell at position (i, j)
+    # First loop over the rows (only rows within the grid are considered)
+    for x in range(max(0, i - 1), min(rows, i + 2)):  # min (not below first row) and max (not above last row)
+        # Secondly loop over the columns (only columns within the grid are considered)
+        for y in range(max(0, j - 1),
+                       min(columns, j + 2)):  # min (not below first column) and max (not above last column)
+            if (x, y) != (i, j):  # Exclude the state of the cell itself from the sum
+                sum += grid[x, y]  # Add the value of the state of the neighbour cell to the sum
+    return sum  # Return the sum
+
+
 # Function to update the grid to the next generation
 def update_generation(grid):
     new_grid = np.copy(grid) # Create an independent copy of the current grid to store the next generation (new_grid)
@@ -61,19 +75,6 @@ def update_generation(grid):
                 new_grid[i, j] = 1  # Cell becomes alive (reproduction)
     # Update the grid with the next generation (new_gird)
     grid[:] = new_grid[:] # update entire content of array grid with the entire content of array new_grid
-
-
-# Function to calculate the sum of neighbour's states
-def compute_neighbour_sum(grid, i, j):
-    sum = 0  # Initialize a variable to store the sum of neighbour values
-    # Loop over the neighbourhood of the cell at position (i, j)
-    # First loop over the rows (only rows within the grid are considered)
-    for x in range(max(0, i-1), min(rows, i+2)): # min (not below first row) and max (not above last row)
-        # Secondly loop over the columns (only columns within the grid are considered)
-        for y in range(max(0, j-1), min(columns, j+2)): # min (not below first column) and max (not above last column)
-            if (x, y) != (i, j):  # Exclude the state of the cell itself from the sum
-                sum += grid[x, y]  # Add the value of the state of the neighbour cell to the sum
-    return sum  # Return the sum
 
 
 # Function to display the current generation (Reference 2/3)
