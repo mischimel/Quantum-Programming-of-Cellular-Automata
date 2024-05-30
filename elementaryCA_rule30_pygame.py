@@ -1,7 +1,7 @@
 import numpy as np  # Import numpy for handling the grid as a 2D array
 import pygame  # Import the pygame library for creating the game window and drawing
 
-# Initialize variables
+# Initialise variables
 # Set up the window
 cell_size = 8  # Set cell size to 8 px, making each cell an 8x8 px square
 window_width = 648  # Window width set to 648 px
@@ -11,7 +11,7 @@ window_height = 480  # Window height set to 480 px
 columns = window_width // cell_size  # 81 cells of size 8 px fit into the 640 px wide window
 rows = window_height // cell_size  # 60 cells of size 8 px fit into the 480 px tall window
 
-# Initialize the grid for the cellular automaton
+# Initialise the grid for the cellular automaton
 grid = np.zeros((rows, columns))  # Current generation of cells
 grid[0, int(columns / 2)] = 1  # Set the center cell of the first row to 1 (alive)
 
@@ -19,14 +19,14 @@ grid[0, int(columns / 2)] = 1  # Set the center cell of the first row to 1 (aliv
 ruleset = [0, 0, 0, 1, 1, 1, 1, 0]  # Rule 30
 #ruleset = [0, 1, 0, 1, 1, 0, 1, 0]  # Rule 90
 
-# Define colors for cell states and grid lines
+# Define colours for cell states and grid lines
 colour_alive = (200, 200, 225)  # Light purple for alive cells
 colour_dead = (10, 10, 40)  # Dark blue for dead cells
 colour_grid = (30, 30, 60)  # Lighter dark blue for grid lines
 
 
-# Function to initialize the CA only middle cell = 1
-#def initialize_grid(grid):
+# Function to initialise the CA only middle cell = 1
+#def initialise_grid(grid):
 #    grid[0, int(columns/2)] = 1
 
 def determine_cell_state(left_cell, middle_cell, right_cell):
@@ -53,7 +53,7 @@ def update_generation(grid):
 def display_grid(surface, grid):
     for i in range(rows):  # Loop over rows of the grid
         for j in range(columns):  # Loop over columns of the grid
-            if grid[i, j] == 1: # Set color based on cell's state
+            if grid[i, j] == 1: # Set colour based on cell's state
                 colour = colour_alive
             else:
                 colour = colour_dead
@@ -72,7 +72,7 @@ pygame.init()  # Initialise the pygame library
 surface = pygame.display.set_mode((window_width, window_height))  # Create the game window with the specified dimensions
 pygame.display.set_caption("1D Cellular Automaton - Rule 30")  # Set the window title
 
-#initialize_grid(grid)
+#initialise_grid(grid)
 
 # Main game loop runs indefinitely until user closes window
 running = True
@@ -82,7 +82,7 @@ while running:
             running = False
             pygame.quit()
 
-    surface.fill(colour_grid)  # Fill the surface with the grid color
+    surface.fill(colour_grid)  # Fill the surface with the grid colour
     update_generation(grid)  # Compute the next generation
     display_grid(surface, grid)  # Display the current generation
     pygame.display.update()  # Update the display
