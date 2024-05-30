@@ -2,28 +2,32 @@ import numpy as np  # Import numpy for handling the grid as a 2D array
 import pygame  # Import the pygame library for creating the game window and drawing
 
 # Initialize variables
-# 1) Set up the window
-cell_size = 8  # Set cell size to 8 px, so a cell is a 8x8 px square
-window_width = 648  # Window will be 648 px wide
-window_height = 480  # Window will be 240 px tall
+# Set up the window
+cell_size = 8  # Set cell size to 8 px, making each cell an 8x8 px square
+window_width = 648  # Window width set to 648 px
+window_height = 480  # Window height set to 480 px
 
+# Calculate number of cells that fit horizontally and vertically in the window
 columns = window_width // cell_size  # 81 cells of size 8 px fit into the 640 px wide window
 rows = window_height // cell_size  # 60 cells of size 8 px fit into the 480 px tall window
 
-colour_alive = (200, 200, 225)  # Alive cells will be light purple
-colour_dead = (10, 10, 40)  # Background (dead cells) will be dark blue
-colour_grid = (30, 30, 60)  # Grid lines will be lighter dark blue
+# Initialize the grid for the cellular automaton
+grid = np.zeros((rows, columns))  # Current generation of cells
+grid[0, int(columns / 2)] = 1  # Set the center cell of the first row to 1 (alive)
 
+# Define the ruleset for the cellular automaton
 ruleset = [0, 0, 0, 1, 1, 1, 1, 0]  # Rule 30
 #ruleset = [0, 1, 0, 1, 1, 0, 1, 0]  # Rule 90
 
-grid = np.zeros((rows, columns))  # Current generation of cells
-grid[0, int(columns/2)] = 1  # Set the center cell of the first row to 1 (alive)
+# Define colors for cell states and grid lines
+colour_alive = (200, 200, 225)  # Light purple for alive cells
+colour_dead = (10, 10, 40)  # Dark blue for dead cells
+colour_grid = (30, 30, 60)  # Lighter dark blue for grid lines
+
 
 # Function to initialize the CA only middle cell = 1
 #def initialize_grid(grid):
 #    grid[0, int(columns/2)] = 1
-
 
 def determine_cell_state(left_cell, middle_cell, right_cell):
     # Convert cell states to integers and then to a binary string
@@ -35,7 +39,7 @@ def determine_cell_state(left_cell, middle_cell, right_cell):
 def update_generation(grid):
     # Loop through each row to generate the next state
     for generation in range(1, rows):
-        nextgen = np.zeros(columns)  # Create a new row for the next generation
+        nextgen = np.zeros(columns)  # Create a placeholder for the next generation
         # Loop through each cell, excluding the edge cells
         for i in range(1, columns - 1):
             left = grid[generation - 1, i - 1]  # Get the state of the left neighbour cell
@@ -64,7 +68,7 @@ def display_grid(surface, grid):
 
 
 # Set up and run the game
-pygame.init()  # Initialize the pygame library
+pygame.init()  # Initialise the pygame library
 surface = pygame.display.set_mode((window_width, window_height))  # Create the game window with the specified dimensions
 pygame.display.set_caption("1D Cellular Automaton - Rule 30")  # Set the window title
 
@@ -82,10 +86,3 @@ while running:
     update_generation(grid)  # Compute the next generation
     display_grid(surface, grid)  # Display the current generation
     pygame.display.update()  # Update the display
-
-
-
-
-
-
-

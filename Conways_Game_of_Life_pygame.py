@@ -50,8 +50,7 @@ def compute_neighbour_sum(grid, i, j):
     # First loop over the rows (only rows within the grid are considered)
     for x in range(max(0, i - 1), min(rows, i + 2)):  # min (not below first row) and max (not above last row)
         # Secondly loop over the columns (only columns within the grid are considered)
-        for y in range(max(0, j - 1),
-                       min(columns, j + 2)):  # min (not below first column) and max (not above last column)
+        for y in range(max(0, j - 1), min(columns, j + 2)):  # min (not below first column) and max (not above last column)
             if (x, y) != (i, j):  # Exclude the state of the cell itself from the sum
                 sum += grid[x, y]  # Add the value of the state of the neighbour cell to the sum
     return sum  # Return the sum
