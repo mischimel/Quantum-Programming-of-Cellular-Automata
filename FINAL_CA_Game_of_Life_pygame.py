@@ -8,6 +8,7 @@ import pygame
 cell_size = 8
 window_width = 640
 window_height = 480
+
 columns = window_width // cell_size
 rows = window_height // cell_size
 
