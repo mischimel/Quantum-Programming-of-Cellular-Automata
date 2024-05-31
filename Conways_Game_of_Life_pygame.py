@@ -37,7 +37,7 @@ def initialize_grid(current_generation):
 
 
 # Function to initialize the grid with random values (generation 0)
-def initialize_grid(grid):
+def initialise_grid(grid):
     for i in range(rows): # Loop through each row, starting from the first to the last row
         for j in range(columns): # Loop through each column, starting from the first to the last column
             grid[i, j] = np.random.randint(2) # Assign a random value (0 or 1) to the cell at position (i, j)
@@ -108,7 +108,7 @@ pygame.init()  # Initialize the pygame library (Reference 2/3)
 surface = pygame.display.set_mode((window_width, window_height))  # Create the game window with the specified dimensions (Reference 2/3)
 pygame.display.set_caption("Conway's Game of Life")  # Set the window title (Reference 2/3)
 
-initialize_grid(grid)  # Initialize the grid with random values
+initialise_grid(grid)  # Initialize the grid with random values
 
 # Main game loop runs indefinitely until user closes window (Reference 2/3)
 while True:

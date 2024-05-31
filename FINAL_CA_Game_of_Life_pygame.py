@@ -19,7 +19,7 @@ colour_dead = (10, 10, 40)
 colour_grid = (30, 30, 60)
 
 
-def initialize_grid(grid):
+def initialise_grid(grid):
     for i in range(rows):
         for j in range(columns):
             grid[i, j] = np.random.randint(2)
@@ -72,7 +72,7 @@ pygame.init()
 surface = pygame.display.set_mode((window_width, window_height))
 pygame.display.set_caption("Conway's Game of Life")
 
-initialize_grid(grid)
+initialise_grid(grid)
 
 while True:
     for event in pygame.event.get():
