@@ -62,7 +62,6 @@ def display_grid(surface, grid):
 
             x = j * cell_size
             y = i * cell_size
-
             width = cell_size - 1
             height = cell_size - 1
 
