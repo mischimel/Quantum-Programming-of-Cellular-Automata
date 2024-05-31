@@ -1,4 +1,4 @@
-# Import Librarie
+# Import Libraries
 import numpy as np  # Import the numpy library for handling arrays
 import pygame  # Import the pygame library for creating the graphical window
 
