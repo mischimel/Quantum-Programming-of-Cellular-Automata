@@ -19,17 +19,19 @@ colour_dead = (10, 10, 40)
 colour_grid = (30, 30, 60)
 
 
-def initialise_grid(grid):
-    for i in range(rows):
-        for j in range(columns):
-            grid[i, j] = np.random.randint(2)
+def initialise_grid(gird):
+    for i in range(1, rows - 1):
+        for j in range(1, columns - 1):
+            gird[i, j] = np.random.randint(2)
 
 
 def compute_neighbour_sum(grid, i, j):
     sum = 0
+    # Skip edge cells
+    if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
+        return 0
 
     for x in range(max(0, i - 1), min(rows, i + 2)):
-
         for y in range(max(0, j - 1), min(columns, j + 2)):
             if (x, y) != (i, j):
                 sum += grid[x, y]
@@ -39,8 +41,8 @@ def compute_neighbour_sum(grid, i, j):
 def update_generation(grid):
     new_grid = np.copy(grid)
 
-    for i in range(rows):
-        for j in range(columns):
+    for i in range(1, rows - 1):
+        for j in range(1, columns - 1):
             neighbour_sum = compute_neighbour_sum(grid, i, j)
 
             if grid[i, j] == 1 and (neighbour_sum < 2 or neighbour_sum > 3):

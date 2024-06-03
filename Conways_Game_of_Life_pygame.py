@@ -20,19 +20,19 @@ colour_dead = (10, 10, 40) # Background (dead cells) will be dark blue
 colour_grid = (30, 30, 60) # Grid lines will be lighter dark blue
 
 
-""" 
+
 # This code initializes the grid starting from the second row and second column (index 1) to 
 # the second-to-last row and column. This approach avoids issues related to boundary conditions.
 
 # Function to initialize the grid with random values (generation 0)
-def initialize_grid(current_generation):
+def initialise_grid(grid):
     # Loop through each row, starting from the second row (index 1) to the second-to-last row
     for i in range(1, rows - 1):
         # Loop through each column, starting from the second column (index 1) to the second-to-last column
         for j in range(1, columns - 1):
             # Assign a random value (0 or 1) to the cell at position (i, j)
             # np.random.randint(2) generates either 0 or 1
-            current_generation[i, j] = np.random.randint(2)
+            grid[i, j] = np.random.randint(2)
 """
 
 
@@ -41,11 +41,15 @@ def initialise_grid(grid):
     for i in range(rows): # Loop through each row, starting from the first to the last row
         for j in range(columns): # Loop through each column, starting from the first to the last column
             grid[i, j] = np.random.randint(2) # Assign a random value (0 or 1) to the cell at position (i, j)
+"""
 
 
 # Function to calculate the sum of neighbour's states
 def compute_neighbour_sum(grid, i, j):
     sum = 0  # Initialize a variable to store the sum of neighbour values
+    # Skip edge cells
+    if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
+        return 0
     # Loop over the neighbourhood of the cell at position (i, j)
     # First loop over the rows (only rows within the grid are considered)
     for x in range(max(0, i - 1), min(rows, i + 2)):  # min (not below first row) and max (not above last row)
@@ -59,9 +63,10 @@ def compute_neighbour_sum(grid, i, j):
 # Function to update the grid to the next generation
 def update_generation(grid):
     new_grid = np.copy(grid) # Create an independent copy of the current grid to store the next generation (new_grid)
-    # Loop through each row and column to update the cells
-    for i in range(rows): # Loop through each row
-        for j in range(columns): # Loop through each column
+
+    # Loop through the grid, skipping the first and last rows and columns
+    for i in range(1, rows - 1): # Loop through each row skipping the first and last
+        for j in range(1, columns - 1): # Loop through each column skipping the first and last
             neighbour_sum = compute_neighbour_sum(grid, i, j) # Calculate the sum of neighbour's states to see how many neighbours are alive
             # Apply Conways game of life rules to determine the next generation
                 # Any cell alive with less than two alive neighbours dies, due to underpopulation.
