@@ -27,7 +27,7 @@ def initialise_grid(gird):
 
 def compute_neighbour_sum(grid, i, j):
     sum = 0
-    # Skip edge cells
+    # Skip edge cells (first and last row and column)
     if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
         return 0
 

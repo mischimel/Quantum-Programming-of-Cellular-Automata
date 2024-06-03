@@ -47,7 +47,7 @@ def initialise_grid(grid):
 # Function to calculate the sum of neighbour's states
 def compute_neighbour_sum(grid, i, j):
     sum = 0  # Initialize a variable to store the sum of neighbour values
-    # Skip edge cells
+    # Skip edge cells (first and last row and column)
     if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
         return 0
     # Loop over the neighbourhood of the cell at position (i, j)
