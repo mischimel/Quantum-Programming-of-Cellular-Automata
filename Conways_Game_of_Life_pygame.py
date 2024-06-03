@@ -49,7 +49,7 @@ def compute_neighbour_sum(grid, i, j):
     sum = 0  # Initialize a variable to store the sum of neighbour values
     # Skip edge cells (first and last row and column)
     if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
-        return 0
+        return None
     # Loop over the neighbourhood of the cell at position (i, j)
     # First loop over the rows (only rows within the grid are considered)
     for x in range(max(0, i - 1), min(rows, i + 2)):  # min (not below first row) and max (not above last row)
@@ -68,6 +68,10 @@ def update_generation(grid):
     for i in range(1, rows - 1): # Loop through each row skipping the first and last
         for j in range(1, columns - 1): # Loop through each column skipping the first and last
             neighbour_sum = compute_neighbour_sum(grid, i, j) # Calculate the sum of neighbour's states to see how many neighbours are alive
+
+            if neighbour_sum is None:  # Skip processing if neighbour_sum is None
+                continue
+
             # Apply Conways game of life rules to determine the next generation
                 # Any cell alive with less than two alive neighbours dies, due to underpopulation.
                 # Any cell alive with two or three alive neighbours survives on to the next generation.
