@@ -69,9 +69,6 @@ def update_generation(grid):
         for j in range(1, columns - 1): # Loop through each column skipping the first and last
             neighbour_sum = compute_neighbour_sum(grid, i, j) # Calculate the sum of neighbour's states to see how many neighbours are alive
 
-            if neighbour_sum is None:  # Skip processing if neighbour_sum is None
-                continue
-
             # Apply Conways game of life rules to determine the next generation
                 # Any cell alive with less than two alive neighbours dies, due to underpopulation.
                 # Any cell alive with two or three alive neighbours survives on to the next generation.

@@ -45,9 +45,6 @@ def update_generation(grid):
         for j in range(1, columns - 1):
             neighbour_sum = compute_neighbour_sum(grid, i, j)
 
-            if neighbour_sum is None:
-                continue
-
             if grid[i, j] == 1 and (neighbour_sum < 2 or neighbour_sum > 3):
                 new_grid[i, j] = 0
 
