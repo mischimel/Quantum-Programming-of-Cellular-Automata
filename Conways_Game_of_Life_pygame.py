@@ -45,7 +45,7 @@ def initialise_grid(grid):
 
 
 # Function to calculate the sum of neighbour's states
-def compute_neighbour_sum(grid, i, j):
+def compute_neighbourhood_sum(grid, i, j):
     sum = 0  # Initialize a variable to store the sum of neighbour values
     # Skip edge cells (first and last row and column)
     if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
@@ -67,16 +67,15 @@ def update_generation(grid):
     # Loop through the grid, skipping the first and last rows and columns
     for i in range(1, rows - 1): # Loop through each row skipping the first and last
         for j in range(1, columns - 1): # Loop through each column skipping the first and last
-            neighbour_sum = compute_neighbour_sum(grid, i, j) # Calculate the sum of neighbour's states to see how many neighbours are alive
-
+            neighbourhood_sum = compute_neighbourhood_sum(grid, i, j) # Calculate the sum of neighbour's states to see how many neighbours are alive
             # Apply Conways game of life rules to determine the next generation
                 # Any cell alive with less than two alive neighbours dies, due to underpopulation.
                 # Any cell alive with two or three alive neighbours survives on to the next generation.
                 # Any cell alive with more than three alive neighbours dies due to overpopulation.
-            if grid[i, j] == 1 and (neighbour_sum < 2 or neighbour_sum > 3):
+            if grid[i, j] == 1 and (neighbourhood_sum < 2 or neighbourhood_sum > 3):
                 new_grid[i, j] = 0  # Cell dies (underpopulation or overpopulation)
                 # Any dead cell with exactly three alive neighbours becomes alive in the next generation due to reproduction, all other dead cells remain dead.
-            elif grid[i, j] == 0 and neighbour_sum == 3:
+            elif grid[i, j] == 0 and neighbourhood_sum == 3:
                 new_grid[i, j] = 1  # Cell becomes alive (reproduction)
     # Update the grid with the next generation (new_gird)
     grid[:] = new_grid[:] # update entire content of array grid with the entire content of array new_grid

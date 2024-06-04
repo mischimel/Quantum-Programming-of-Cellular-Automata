@@ -25,7 +25,7 @@ def initialise_grid(gird):
             gird[i, j] = np.random.randint(2)
 
 
-def compute_neighbour_sum(grid, i, j):
+def compute_neighbourhood_sum(grid, i, j):
     sum = 0
     # Skip edge cells (first and last row and column)
     if i == 0 or i == rows - 1 or j == 0 or j == columns - 1:
@@ -43,12 +43,12 @@ def update_generation(grid):
 
     for i in range(1, rows - 1):
         for j in range(1, columns - 1):
-            neighbour_sum = compute_neighbour_sum(grid, i, j)
+            neighbourhood_sum = compute_neighbourhood_sum(grid, i, j)
 
-            if grid[i, j] == 1 and (neighbour_sum < 2 or neighbour_sum > 3):
+            if grid[i, j] == 1 and (neighbourhood_sum < 2 or neighbourhood_sum > 3):
                 new_grid[i, j] = 0
 
-            elif grid[i, j] == 0 and neighbour_sum == 3:
+            elif grid[i, j] == 0 and neighbourhood_sum == 3:
                 new_grid[i, j] = 1
 
     grid[:] = new_grid[:]
