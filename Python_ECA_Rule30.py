@@ -5,7 +5,7 @@ References:
      URL: https://natureofcode.com/cellular-automata/#elementary-cellular-automata
 2. John Conways "Game of Life" in Python,
      URL: https://beltoforion.de/en/recreational_mathematics/game_of_life.php (Used to set up Pygame)
-3. Beltoforion, Recreational Mathematics with Python,
+3. Ingo Berg (Beltoforion), Recreational Mathematics with Python,
      URL: https://github.com/beltoforion/recreational_mathematics_with_python/blob/master/game_of_life.py (Used to set up Pygame)
 """
 
