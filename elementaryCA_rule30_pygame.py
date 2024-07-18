@@ -1,4 +1,4 @@
-import numpy as np  # Import numpy for handling the grid as a 2D array
+import numpy as np  # Import numpy for handling the grid as a 2dimensional array
 import pygame  # Import the pygame library for creating the game window and drawing
 
 # Initialise variables
