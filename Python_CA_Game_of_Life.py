@@ -1,7 +1,17 @@
-# Reference 1: https://editor.p5js.org/mischimel/sketches/g39n5NM9U (my code for Ex 7.7 from Daniel Shiffmann, with the help of ChatGPT)
-# Reference 2: https://beltoforion.de/en/recreational_mathematics/game_of_life.php
-# Reference 3: https://github.com/beltoforion/recreational_mathematics_with_python/blob/master/game_of_life.py
+"""
+Author: Michele Fille
+References:
+1. my solution to Exercise 7.7 from Daniel Shiffman. URL: https://editor.p5js.org/mischimel/sketches/g39n5NM9U
+1.1. Shiffman, The Nature of Code - Chapter 7: Cellular Automata - Exercise 7.7,
+     URL: https://natureofcode.com/cellular-automata/#elementary-cellular-automata
+1.2 ChatGPT was used to support and help fix errors in solving Exercise 7.7
+2. John Conways "Game of Life" in Python,
+     URL: https://beltoforion.de/en/recreational_mathematics/game_of_life.php (Used to set up Pygame)
+3. Beltoforion, Recreational Mathematics with Python,
+     URL: https://github.com/beltoforion/recreational_mathematics_with_python/blob/master/game_of_life.py (Used to set up Pygame)
+"""
 
+# Import Libraries
 import numpy as np
 import pygame
 
@@ -75,7 +85,7 @@ def display_grid(surface, grid):
             # Draw rectangle representing the cell
             pygame.draw.rect(surface, colour, (x, y, width, height))
 
-# Initialize pygame and create a game window
+# Initialise pygame and create a game window
 pygame.init()
 surface = pygame.display.set_mode((window_width, window_height))
 pygame.display.set_caption("Conway's Game of Life")
