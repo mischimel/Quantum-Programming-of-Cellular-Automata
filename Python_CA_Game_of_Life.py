@@ -93,14 +93,13 @@ pygame.display.set_caption("Conway's Game of Life")
 # Initialise the grid with random cell states
 initialise_grid(grid)
 
-# Main game loop
+# Game Loop
 running = True  # Set the running variable to True to start the game loop
 while running:
-    # Check for events and handle quit event
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-            pygame.quit()
+    for event in pygame.event.get():  # Iterate through all events
+        if event.type == pygame.QUIT:  # Check if the user clicked the close button
+            running = False  # Set running to False to end the game loop
+            pygame.quit()  # Shut down pygame
 
     # Fill the surface with grid line colour
     surface.fill(colour_grid)
