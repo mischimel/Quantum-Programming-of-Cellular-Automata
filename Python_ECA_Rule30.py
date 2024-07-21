@@ -2,7 +2,7 @@
 Author: Michele Fille
 References:
 1. Shiffman, The Nature of Code - Chapter 7: Cellular Automata
-     URL: https://natureofcode.com/cellular-automata/#elementary-cellular-automata
+     URL: https://natureofcode.com/cellular-automata/
 2. John Conways "Game of Life" in Python,
      URL: https://beltoforion.de/en/recreational_mathematics/game_of_life.php (Used to set up Pygame)
 3. Ingo Berg (Beltoforion), Recreational Mathematics with Python,

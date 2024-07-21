@@ -3,7 +3,7 @@ Author: Michele Fille
 References:
 1. my solution to Exercise 7.7 from Daniel Shiffman. URL: https://editor.p5js.org/mischimel/sketches/g39n5NM9U
 1.1. Shiffman, The Nature of Code - Chapter 7: Cellular Automata - Exercise 7.7,
-     URL: https://natureofcode.com/cellular-automata/#elementary-cellular-automata
+     URL: https://natureofcode.com/cellular-automata/
 1.2 ChatGPT was used to support and help fix errors in solving Exercise 7.7
 2. John Conways "Game of Life" in Python,
      URL: https://beltoforion.de/en/recreational_mathematics/game_of_life.php (Used to set up Pygame)
